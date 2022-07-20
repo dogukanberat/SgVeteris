@@ -1,0 +1,287 @@
+{
+	"info": {
+		"_postman_id": "b2ecef1d-cdd4-4f9c-80ee-0773b9af93cf",
+		"name": "Sgveteris",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6822978"
+	},
+	"item": [
+		{
+			"name": "BitPace",
+			"item": [
+				{
+					"name": "Get Acces Token With Invalıd Credential",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"The response has all properties\", () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"      pm.expect(responseJson.status).to.eql('DECLINED');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 401\", () => {\r",
+									"  pm.expect(pm.response.code).to.eql(401);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"merchant_code\": \"207200853031\",\r\n    \"password\": \"fteds\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{APIURL}}/auth/token",
+							"host": [
+								"{{APIURL}}"
+							],
+							"path": [
+								"auth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Acces Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"var token = jsonData[\"data\"][\"token\"];\r",
+									"pm.collectionVariables.set(\"Authorization\", token);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", () => {\r",
+									"  pm.expect(pm.response.code).to.eql(200);\r",
+									"  pm.expect(jsonData.status).to.eql('APPROVED');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"merchant_code\": \"20720085303\",\r\n    \"password\": \"f3bf10e5-ce97-4364-bf9e-1606bf450465\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{APIURL}}/auth/token",
+							"host": [
+								"{{APIURL}}"
+							],
+							"path": [
+								"auth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Prices",
+			"item": [
+				{
+					"name": "Buy BTC Prices",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"The response has all properties\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.data.buy_price).to.not.equal('');",
+									"    pm.expect(responseJson.status).to.equal('APPROVED');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Status code is 200\", () => {",
+									"  pm.expect(pm.response.code).to.eql(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{APIURL}}/buy/prices/BTC",
+							"host": [
+								"{{APIURL}}"
+							],
+							"path": [
+								"buy",
+								"prices",
+								"BTC"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buy Invalıd Coin Name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"The response has all properties\", () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.status).to.eql('DECLINED');\r",
+									"    pm.expect(responseJson.message).to.eql('Unsupported cryptocurrency');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{APIURL}}/buy/prices/etc",
+							"host": [
+								"{{APIURL}}"
+							],
+							"path": [
+								"buy",
+								"prices",
+								"etc"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dynamic Deposits",
+			"item": [
+				{
+					"name": "Create Deposit Address",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"The response has all properties\", () => {",
+									"    const responseJson = pm.response.json();",
+									"        pm.expect(responseJson.data.address).to.not.equal('');",
+									"        pm.expect(responseJson.status).to.eql('APPROVED');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Status code is 200\", () => {",
+									"    pm.expect(pm.response.code).to.eql(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cryptocurrency\" : \"btc\",\r\n    \"customer\" : {\r\n        \"reference_id\" : \"20720085303\",\r\n        \"first_name\" : \"Dogukan\",\r\n        \"last_name\" : \"Elbasan\",\r\n        \"email\" : \"dogukanelbasan0@gmail.com\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{APIURL}}/customer/deposit/address",
+							"host": [
+								"{{APIURL}}"
+							],
+							"path": [
+								"customer",
+								"deposit",
+								"address"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "APIURL",
+			"value": "https://api-sandbox.bitpace.com/api/v1"
+		},
+		{
+			"key": "Authorization",
+			"value": ""
+		}
+	]
+}
