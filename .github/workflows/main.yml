@@ -1,0 +1,15 @@
+name: Sgveteris Postman Api Test
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  newman:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: matt-ball/newman-action@master
+        with:
+          collection: Sgveteris.postman_collection.json

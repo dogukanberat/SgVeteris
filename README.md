@@ -1,6 +1,8 @@
-# SgVeterisPostman
+# SgVeteris Postman
 _https://www.getpostman.com/collections/0a8518c4dff0341b2c23_
 
+
+# NewMan Results
 ![](newman.png) 
 ## API Test Scenarios
 
