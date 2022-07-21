@@ -79,7 +79,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"merchant_code\": \"20720085303\",\r\n    \"password\": \"f3bf10e5-ce97-4364-bf9e-1606bf450465\"\r\n}",
+							"raw": "{\r\n    \"merchant_code\": \"20720181947\",\r\n    \"password\": \"ebdeed9f-a9da-4410-906b-bd805b55fc8b\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
