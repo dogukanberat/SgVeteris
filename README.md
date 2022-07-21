@@ -2,12 +2,14 @@
 _https://www.getpostman.com/collections/0a8518c4dff0341b2c23_
 
 
+# CI/CD
+I connected this postman API test with github actions thus it can be triggered when it got any pull request or push and programmatically by github APIs or manually via github.
+https://github.com/dogukanberat/SgVeteris/runs/7444526576?check_suite_focus=true
+
 # NewMan Results
 ![](newman.png) 
+
 ## API Test Scenarios
-
-
----
 
 1-
 - Merchant should be able to authorize and get token with login credentials
