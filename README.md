@@ -6,6 +6,8 @@ _https://www.getpostman.com/collections/0a8518c4dff0341b2c23_
 
 
 ---
+
+1-
 - Merchant should be able to authorize and get token with login credentials
 
   _Expectation: Merchant should be received correct token code_
@@ -28,6 +30,7 @@ _https://www.getpostman.com/collections/0a8518c4dff0341b2c23_
 
 
 ---
+2-
 - Merchant tries to login with invalid credentials
 
   _Expectation: Merchant should be received an error message_
@@ -45,17 +48,9 @@ _https://www.getpostman.com/collections/0a8518c4dff0341b2c23_
 `Send post request with this wrong parameters
 `
 
-**_RESPONSE_**
-
-`{
-"code": "401",
-"message": "Unauthorized access",
-"status": "DECLINED",
-"traceId": "0c942e22497b55b8"
-}
-`
 
 ---
+3-
 - Merchants can receive BTC buy rate using correct token
 
   _Expectation: Merchant should be received the rate._
@@ -70,6 +65,7 @@ _https://www.getpostman.com/collections/0a8518c4dff0341b2c23_
 
 
 ---
+4-
 - Merchant calls incorrect cryptocurrency code "etc" using correct token
   _Expectation: Merchant should be received an unsupported cryptocurrency message_
 
@@ -82,6 +78,7 @@ _https://www.getpostman.com/collections/0a8518c4dff0341b2c23_
 
 
 ---
+5-
 - Merchant can create a btc address using Create Deposit Address endpoint.
   _Expectation: Merchant should be received a BTC address_
 
@@ -109,6 +106,8 @@ _https://www.getpostman.com/collections/0a8518c4dff0341b2c23_
 | `first_name`      | `Dogukan` |
 | `last_name`      | `Elbasan` |
 | `email`      | `dogukanelbasan0@gmail.com` |
+
+
 `  Send post request to api /customer/deposit/address with Auth and Correct Data`
 
 ---
